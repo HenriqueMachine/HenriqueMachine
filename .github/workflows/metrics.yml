@@ -27,6 +27,3 @@ jobs:
           plugin_languages_ignored: html, css, shell, makefile
           plugin_languages_sections: most-used
           plugin_languages_details: percentage
-          plugin_achievements: yes
-          plugin_achievements_display: compact
-          plugin_achievements_threshold: B
