@@ -41,7 +41,7 @@ The code is private. The workflow is not: I am opening it as a template (see bel
 | Project | What it is |
 |---|---|
 | [EasyFingerPrint](https://github.com/HenriqueMachine/EasyFingerPrint) | Android fingerprint authentication library · Material Design |
-| [Deepdeck](https://github.com/HenriqueMachine/Deepdeck) | AntaresOS: a keyboard-driven, composable macOS workspace |
+| [Deepdeck](https://github.com/HenriqueMachine/Deepdeck) | A keyboard-driven terminal workspace for running a team of AI coding agents (building now) |
 | [distributed-consistency-jvm](https://github.com/HenriqueMachine/distributed-consistency-jvm) | Sagas and failure as part of the flow, in Kotlin |
 | [sdui-backend](https://github.com/HenriqueMachine/sdui-backend) · [sdui-app](https://github.com/HenriqueMachine/sdui-app) | Server-driven UI: a Ktor backend and a Flutter renderer with a shared JSON Schema contract |
 | [Pokedex](https://github.com/HenriqueMachine/Pokedex) | Android with Clean Architecture · Compose · Paging 3 |
