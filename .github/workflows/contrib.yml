@@ -1,0 +1,23 @@
+name: Contributions card
+on:
+  schedule: [{ cron: "30 9 * * *" }]
+  workflow_dispatch:
+  push: { branches: ["main"], paths: [".github/scripts/contrib.mjs", ".github/workflows/contrib.yml"] }
+
+jobs:
+  card:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: "20" }
+      - run: node .github/scripts/contrib.mjs
+        env:
+          GH_TOKEN: ${{ secrets.METRICS_TOKEN }}
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add contrib.svg contrib.json
+          git diff --cached --quiet || (git commit -m "Update contributions card [skip ci]" && git push)
