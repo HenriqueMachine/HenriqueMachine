@@ -8,6 +8,12 @@ I'm a Kotlin & Flutter engineer from São Paulo. I started with Android librarie
 
 <br>
 
+<a href="https://henriquemachine.github.io"><img src="assets/descida.gif" alt="A Descida: a scroll descent down a neon mountain that shows the AI agent team" width="100%"></a>
+
+<p align="center"><a href="https://henriquemachine.github.io"><b>▶ Descer a montanha</b></a> · the agent team, the gates and the harness, as a scroll journey (pt-BR)</p>
+
+<br>
+
 **🧑‍🍳 What I'm building: FoodBot**
 
 A SaaS for delivery restaurants in Brazil: orders, reviews, menu, stock and payouts in one place, with Burg, its virtual assistant. It is integrated with iFood through the official partner API.
