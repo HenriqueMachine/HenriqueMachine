@@ -111,8 +111,12 @@ A failure sends the change back one gate, never to the start.
 ![Go](https://img.shields.io/badge/Go-00ADD8?style=flat&logo=go&logoColor=white)
 ![Claude Code](https://img.shields.io/badge/Claude_Code-D97757?style=flat&logo=anthropic&logoColor=white)
 
+### 📈 Activity
+
+<img src="contrib.svg" alt="Contributions in the last 12 months: calendar, activity overview and top repositories" width="100%">
+
 <details>
-<summary><code>$ cat stats.log</code> · public and private contributions, updated daily</summary>
+<summary><code>$ cat stats.log</code> · more stats, updated daily</summary>
 <br>
 <img src="metrics.svg" alt="GitHub metrics of HenriqueMachine" width="100%">
 </details>
