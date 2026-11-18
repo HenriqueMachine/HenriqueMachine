@@ -10,7 +10,7 @@ const query = `query($login: String!) { user(login: $login) { contributionsColle
   contributionCalendar { totalContributions weeks { contributionDays { date contributionCount } } }
   totalCommitContributions totalIssueContributions totalPullRequestContributions totalPullRequestReviewContributions
   totalRepositoriesWithContributedCommits restrictedContributionsCount
-  commitContributionsByRepository(maxRepositories: 5) { repository { nameWithOwner } contributions { totalCount } } } } }`;
+  commitContributionsByRepository(maxRepositories: 5) { repository { nameWithOwner isPrivate } contributions { totalCount } } } } }`;
 
 const res = await fetch("https://api.github.com/graphql", {
   method: "POST",
@@ -25,7 +25,10 @@ const days = c.contributionCalendar.weeks.flatMap((w) => w.contributionDays).map
 const kinds = { commits: c.totalCommitContributions, pullRequests: c.totalPullRequestContributions, issues: c.totalIssueContributions, reviews: c.totalPullRequestReviewContributions };
 const kindTotal = Object.values(kinds).reduce((a, b) => a + b, 0) || 1;
 const pct = Object.fromEntries(Object.entries(kinds).map(([k, v]) => [k, Math.round((v / kindTotal) * 100)]));
-const repos = c.commitContributionsByRepository.map((r) => ({ name: r.repository.nameWithOwner, commits: r.contributions.totalCount }));
+// Private repositories never show their real name: a public alias, or a generic label.
+const ALIAS = { "foodbot-service": "FoodBot · backend", "foodbot-app": "FoodBot · app", "foodbot-ops": "FoodBot · ops", "brain-kitchen": "FoodBot · vault", "foodbot-extension": "FoodBot · extension" };
+const repoLabel = (r) => r.isPrivate ? (ALIAS[r.nameWithOwner.split("/").pop()] || "private project") : r.nameWithOwner;
+const repos = c.commitContributionsByRepository.map((r) => ({ name: repoLabel(r.repository), commits: r.contributions.totalCount }));
 let best = 0, cur = 0; for (const [, n] of days) { cur = n > 0 ? cur + 1 : 0; best = Math.max(best, cur); }
 const data = {
   generatedAt: new Date().toISOString(), login, total: c.contributionCalendar.totalContributions,
