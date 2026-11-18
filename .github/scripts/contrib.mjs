@@ -36,7 +36,7 @@ writeFileSync("contrib.json", JSON.stringify(data));
 
 // ---------- SVG ----------
 const C = { bg: "#05070b", line: "#1c2230", lineHi: "#2c3547", text: "#f5f5f5", muted: "#a7aebe", faint: "#6b7385", cyan: "#05d9e8", mag: "#ff2a6d", yel: "#f9f002" };
-const W = 900, H = 370, cell = 12, gap = 3, left = 46, top = 74;
+const W = 900, H = 400, cell = 12, gap = 3, left = 46, top = 74;
 const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[m]));
 const fmt = (n) => n.toLocaleString("en-US");
 const max = Math.max(1, ...days.map((d) => d[1]));
@@ -53,7 +53,7 @@ days.forEach(([d, n], i) => {
   cells += `<rect x="${x}" y="${y}" width="${cell}" height="${cell}" fill="${hot ? C.mag : shades[q(n)]}"${hot || q(n) === 4 ? ' filter="url(#g)"' : ""}><title>${d}: ${n}</title></rect>`;
 });
 // radar
-const rx = 190, ry = 290, R = 52;
+const rx = 190, ry = 312, R = 46;
 const pts = [[rx - pct.commits / 100 * R, ry], [rx, ry - pct.reviews / 100 * R], [rx + pct.issues / 100 * R, ry], [rx, ry + pct.pullRequests / 100 * R]];
 const radar = `<line x1="${rx - R}" y1="${ry}" x2="${rx + R}" y2="${ry}" class="ax"/><line x1="${rx}" y1="${ry - R}" x2="${rx}" y2="${ry + R}" class="ax"/>
   <polygon points="${pts.map((p) => p.join(",")).join(" ")}" fill="${C.cyan}" fill-opacity=".18" stroke="${C.cyan}" stroke-width="1.6" filter="url(#g)"/>
